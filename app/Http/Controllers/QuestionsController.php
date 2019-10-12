@@ -58,12 +58,17 @@ class QuestionsController extends Controller
 
     public function create()
     {
-        //
+        $question = new Question();
+        return view('questions.create',compact('question'));
     }
 
-    public function store(Request $request)
+    public function store(Question $question)
     {
-        //
+        $attributes = request()->validate([
+            'title'=>'required|min:3',
+            'body'=>'required'
+        ]);
+        return redirect('questions.index',compact('question'));
     }
 
     public function show(Question $question)
