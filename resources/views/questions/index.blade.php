@@ -12,10 +12,10 @@
                         <div class="media">
                             <div class="d-flex flex-column counters">
                                 <div class="vote">
-                                    <strong>{{ $question->votes  }} </strong>{{Str::plural('votes',$question->votes)}}
+                                    <strong>{{ $question->votes  }} </strong>{{Str::plural('vote',$question->votes)}}
                                 </div>
-                                <div class="answers">
-                                    <strong>{{ $question->answers  }} </strong>{{Str::plural('answers',$question->votes)}}
+                                <div class="status {{$question->status}}">
+                                    <strong>{{ $question->answers  }} </strong>{{Str::plural('answer',$question->votes)}}
                                 </div>
                                 <div class="view">
                                     {{ $question->views  . " " .Str::plural('view',$question->votes)}}
