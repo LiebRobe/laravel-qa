@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AskQuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
 use DateTime;
 use App\User;
+
 class QuestionsController extends Controller
 {
     function dateDifference($date_1 , $date_2 , $differenceFormat = '%a' )
@@ -62,13 +64,11 @@ class QuestionsController extends Controller
         return view('questions.create',compact('question'));
     }
 
-    public function store(Question $question)
+    public function store(AskQuestionRequest $request)
     {
-        $attributes = request()->validate([
-            'title'=>'required|min:3',
-            'body'=>'required'
-        ]);
-        return redirect('questions.index',compact('question'));
+
+        $request->user()->questions()->create($request->only('title','body'));
+        return redirect('questions')->with('success','Your question has been submitted');
     }
 
     public function show(Question $question)
