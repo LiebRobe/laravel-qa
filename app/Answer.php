@@ -22,4 +22,16 @@ class Answer extends Model
     {
         return \Parsedown::instance()->text($this->body);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created( function ($answer){
+            $answer->question->increment('answers_count');
+            // $answer->question->save();       //you don`t need to call this save() method, it`s called behind
+                                                //the schene, when you call increment() method
+        });
+
+    }
 }
