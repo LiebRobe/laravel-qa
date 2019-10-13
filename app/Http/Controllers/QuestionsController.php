@@ -79,18 +79,35 @@ class QuestionsController extends Controller
 
     public function edit(Question $question)
     {
-        return view('questions.edit',compact('question'));
+        if(\Gate::allows('update-question',$question)){
+
+            return view('questions.edit',compact('question'));
+        }
+        else{
+            // abort(403,'Access denied');
+            return back()->with('abort','You are not allowed to edit this Question!');
+         }
     }
 
     public function update(AskQuestionRequest $request, Question $question)
     {
+        if(\Gate::denies('update-question',$question)){
+            return back()->with('abort','You are not allowed to edit this Question!');
+        }
         $question->update($request->only('title','body'));
         return redirect('questions')->with('success','Your question has been updated!');
     }
 
     public function destroy(Question $question)
     {
-        $question->delete();
-        return redirect('questions')->with('success','Your question has been deleted!');
+        if(\Gate::allows('delete-question',$question)){
+
+            $question->delete();
+            return redirect('questions')->with('success','Your question has been deleted!');
+        }
+        else{
+            // abort(403,'Access denied!');
+            return back()->with('abort','You are not allowed to edit this Question!');
+        }
     }
 }

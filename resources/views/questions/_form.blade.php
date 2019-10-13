@@ -5,8 +5,7 @@
     <input type="text" name="title" id="question-title"
            class="form-control {{ $errors->has('title')?'is-invalid':''  }}"
            value="{{old('title',$question->title)}}"
-
-            >
+           >
 
     @if($errors->has('title'))
         <div class="invalid-feedback">
@@ -15,9 +14,13 @@
             </strong>
         </div>
     @endif
+
 </div>
+
 <div class="form-group">
+
     <label for="question-body">Explain your Question</label>
+
     <textarea name="body"
               id="question-body"
               rows="10"
@@ -34,7 +37,9 @@
             </strong>
         </div>
     @endif
+
 </div>
+
 <div class="form-group">
     <button type="submit" class="btn btn-outline-primary btn-lg">{{ $buttonText }}</button>
 </div>
