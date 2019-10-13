@@ -10,6 +10,12 @@ use App\User;
 
 class QuestionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth',)->except(['except'=>'index','show']);
+    }
+
     function dateDifference($date_1 , $date_2 , $differenceFormat = '%a' )
     {
         $datetime1 = date_create($date_1);
@@ -79,17 +85,20 @@ class QuestionsController extends Controller
 
     public function edit(Question $question)
     {
+        $this->authorize('update',$question);
         return view('questions.edit',compact('question'));
     }
 
     public function update(AskQuestionRequest $request, Question $question)
     {
+        $this->authorize('update',$question);
         $question->update($request->only('title','body'));
         return redirect('questions')->with('success','Your question has been updated!');
     }
 
     public function destroy(Question $question)
     {
+        $this->authorize('delete',$question);
         $question->delete();
         return redirect('questions')->with('success','Your question has been deleted!');
     }
