@@ -28,11 +28,14 @@
                                 </a>
                                 <span class="votes-count">1230</span>
                                 <a title="This question is not usefull" class="vote-down off">
-                                    Vote down
+{{--                                    Vote down--}}
+                                    <span class="fas fa-caret-down"></span>
                                 </a>
                                 <a title="Click to mark as favorite question (Click again to undo)" class="favorite">
-                                    favorite
+{{--                                    favorite--}}
+                                    <span class="far fa-star"></span>
                                     <span class="favorites-count">123</span>
+                                    <span class="far fa-check-square"></span>
                                 </a>
                             </div>
                             <div class="float-right">
