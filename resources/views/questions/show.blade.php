@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-10">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-itis-center">
                             <h1>
                                 {{$question->title}}
                             </h1>
@@ -21,26 +21,29 @@
                     <hr/>
 
                     <div class="media ">
+                        <div class="d-flex flex-column vote-controls">
+
+                            <a title="This question is useful" class="vote-up">
+                                <i class="fas fa-caret-up fa-3x"></i>
+                            </a>
+
+                            <span class="votes-count">1230</span>
+
+                            <a title="This question is not usefull" class="vote-down off">
+                                <i class="fa fa-caret-down fa-3x"></i>
+                            </a>
+
+                            <a title="Click to mark as favorite question (Click again to undo)" class="favorite mt-5 favorited">
+                                <i class="far fa-star fa-2x"></i>
+                                <span class="favorites-count">123</span>
+{{--                                --}}
+                            </a>
+                        </div>
                         <div class="media-body">
-                            <div class="d-flex flex-column vote-controls">
-                                <a title="This question is useful" class="vote-up">
-                                    <i class="fas fa-caret-up"></i>
-                                </a>
-                                <span class="votes-count">1230</span>
-                                <a title="This question is not usefull" class="vote-down off">
-{{--                                    Vote down--}}
-                                    <span class="fas fa-caret-down"></span>
-                                </a>
-                                <a title="Click to mark as favorite question (Click again to undo)" class="favorite">
-{{--                                    favorite--}}
-                                    <span class="far fa-star"></span>
-                                    <span class="favorites-count">123</span>
-                                    <span class="far fa-check-square"></span>
-                                </a>
-                            </div>
-                            <div class="float-right">
-                                <span class="text-muted">Answered {{ $question->created_date }}</span>
-                                <div class="media mt-2">
+                                {!! $question->body_html !!}
+                                 <div class="float-right">
+                                 <span class="text-muted">Answered {{ $question->created_date }}</span>
+                                 <div class="media mt-2">
                                     <a href="{{$question->user->url}}" class="pr-2">
                                         <img src="{{$question->user->avatar}}">
                                     </a>
@@ -67,9 +70,27 @@
                     <hr />
                     @foreach($question->answers as $answer)
                     <div class="media">
+                        <div class="d-flex flex-column vote-controls">
+
+                            <a title="This answer is useful" class="vote-up">
+                                <i class="fas fa-caret-up fa-3x"></i>
+                            </a>
+
+                            <span class="votes-count">1230</span>
+
+                            <a title="This answer is not usefull" class="vote-down off">
+                                <i class="fa fa-caret-down fa-3x"></i>
+                            </a>
+
+                            <a title="Mark this answer as best answer" class="vote-accepted mt-5">
+                                <i class="far fa-check-square fa-2x"></i>
+                                <span class="favorites-count">123</span>
+                                {{--                                <i class="far fa-check-square fa-3x"></i>--}}
+                            </a>
+                        </div>
                         <div class="media-body">
                             {!! $answer->body_html !!}
-                            <div class="float-left">
+                            <div class="float-right">
                                 <span class="text-muted">Answered {{ $answer->created_date }}</span>
                                 <div class="media mt-2">
                                     <a href="{{$answer->user->url}}" class="pr-2">
