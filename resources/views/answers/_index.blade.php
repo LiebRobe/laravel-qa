@@ -21,7 +21,7 @@
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
 
-                            <a title="Mark this answer as best answer" class="vote-accepted mt-5">
+                            <a title="Mark this answer as best answer" class="{{ $answer->status }} mt-5">
                                 <i class="far fa-check-square fa-2x"></i>
                                 <span class="favorites-count">123</span>
                             </a>
