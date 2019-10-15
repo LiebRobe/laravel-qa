@@ -47,6 +47,11 @@ class Answer extends Model
         });
     }
 
+    public function getCreatedDateAttribute(Type $var = null)
+    {
+        return $this->created_at->diffForHumans();
+    }
+
     public function getStatusAttribute()
     {
         return $this->id == $this->question->best_answer_id ? 'vote-accepted' : '';

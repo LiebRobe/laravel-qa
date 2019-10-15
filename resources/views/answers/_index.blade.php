@@ -21,11 +21,15 @@
                                 <i class="fa fa-caret-down fa-3x"></i>
                             </a>
 
-                            <a title="Mark this answer as best answer" class="{{ $answer->status }} mt-5">
+                            <a
+                                title="Mark this answer as best answer"
+                                class="{{ $answer->status }} mt-5"
+                                onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();"
+                                >
                                 <i class="far fa-check-square fa-2x"></i>
                                 <span class="favorites-count">123</span>
                             </a>
-
+                            <form id="accept-answer-{{ $answer->id }}" action="{{ route('answer.accept',$answer->id) }}" method="POST" style="display:none;">@csrf</form>
                         </div>
 
                         <div class="media-body">
