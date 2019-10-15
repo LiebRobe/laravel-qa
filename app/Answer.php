@@ -36,6 +36,10 @@ class Answer extends Model
                                                 //the schene, when you call increment() method
         });
 
+        static::deleted(function($answer){
+            $answer->question->decrement('answers_count');
+        });
+
     }
 
         public function getCreatedDateAttribute(){

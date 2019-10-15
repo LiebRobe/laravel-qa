@@ -72,6 +72,8 @@ class AnswersController extends Controller
     {
         $this->authorize('delete',$answer);
         $answer->delete();
-        return back()->with('success','Your Answer has been deleted seccessfully!');
+        // $question->answers_count = $question->answers->count();
+        // $question->save();
+        return back()->with('success','Your Answer for question "' . $question->title . '" has been deleted seccessfully!');
     }
 }
