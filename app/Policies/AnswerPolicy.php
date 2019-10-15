@@ -11,40 +11,6 @@ class AnswerPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any answers.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the answer.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Answer  $answer
-     * @return mixed
-     */
-    public function view(User $user, Answer $answer)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create answers.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
      * Determine whether the user can update the answer.
      *
      * @param  \App\User  $user
@@ -69,27 +35,4 @@ class AnswerPolicy
 
     }
 
-    /**
-     * Determine whether the user can restore the answer.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Answer  $answer
-     * @return mixed
-     */
-    public function restore(User $user, Answer $answer)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the answer.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Answer  $answer
-     * @return mixed
-     */
-    public function forceDelete(User $user, Answer $answer)
-    {
-        //
-    }
 }

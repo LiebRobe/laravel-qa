@@ -49,16 +49,17 @@ class AnswersController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Answer $answer, Question $question)
+    public function update(Request $request, Question $question, Answer $answer)
     {
         $this->authorize('update',$answer);
 
         $validInput = $request->validate([
             'body'=>'required'
         ]);
-        $answer->update($validInput->body);
 
-        return redirect('questions.show',$question->slug)->with('success','Your Answer has been updated successfully!');
+        $answer->update($validInput);
+
+        return redirect()->route('questions.show',$question->slug)->with('success','Your Answer has been updated successfully!');
     }
 
     /**

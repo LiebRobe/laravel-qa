@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AskQuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
-use DateTime;
 use App\User;
 
 class QuestionsController extends Controller
