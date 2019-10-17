@@ -17,7 +17,7 @@ class AddForeignBestAnswerIdToQuestionsTable extends Migration
             $table->foreign('best_answer_id')
                   ->references('id')
                   ->on('answers')
-                  ->onDelete('SET NULL');
+                  ->onDelete('cascade');
         });
     }
 
