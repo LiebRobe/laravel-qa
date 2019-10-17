@@ -29,6 +29,7 @@
                                     <i class="far fa-check-square fa-2x"></i>
                                     <span class="favorites-count">123</span>
                                 </a>
+<<<<<<< HEAD
                                 <form id="accept-answer-{{ $answer->id }}" action="{{ route('answer.accept',$answer->id) }}" method="POST" style="display:none;">@csrf</form>
                             @else
                                 @if($answer->is_best)
