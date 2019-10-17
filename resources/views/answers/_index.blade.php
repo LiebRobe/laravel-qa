@@ -40,6 +40,20 @@
                                         <i class="far fa-check-square fa-2x"></i>
                                         <span class="favorites-count">123</span>
                                     </a>
+=======
+                                <form id="accept-answer-{{ $answer->id }}" action="{{ route('answer.accept',$answer->id) }}" method="POST" style="display:none;">
+                                    @csrf
+                                </form>
+                            @else
+                                @if($answer->is_best)
+                                <a
+                                title="The question owner accepted this answer as best answer"
+                                class="{{ $answer->status }} mt-5"
+                                >
+                                <i class="far fa-check-square fa-2x"></i>
+                                <span class="favorites-count">123</span>
+                            </a>
+>>>>>>> lesson-20-new
                                 @endif
                             @endcan
                         </div>
