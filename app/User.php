@@ -52,9 +52,14 @@ class User extends Authenticatable
         return $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?s=" . $size;
     }
 
+<<<<<<< HEAD
     public function favorites()
     {
 
         return $this->belongsToMany(Question::class,'favaorite')->withTimestamps();
+=======
+    public function favorites(){
+        return $this->belongsToMany(Question::class,'favorites');
+>>>>>>> lesson-20
     }
 }
